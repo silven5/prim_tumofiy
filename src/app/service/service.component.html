@@ -1,0 +1,112 @@
+<div class="flex div">
+  <h1 class="text">Завдання</h1>
+  <h2 class="text-main">
+    1. Розробити сервіс для табулювання функції відповідно до варіанту <br />
+    2. Розробити сервіс для розрахунку значень функції за допомогою ряду
+    відповідно до варіанту <br />
+    3. Розробити сервіс для розрахунку значень функції за допомогою рекурсії
+    відповідно до варіанту <br />
+    4. Розробити сервіс для логування обчислених значень у консоль та
+    використати його у попередніх трьох сервісах <br />
+    5. У основному застосунку підключити сервіси, вивести результати усіх
+    розрахунків та побудувати графіки для усіх обрахунків. <br />
+  </h2>
+  <!-- <img class="task-img" src="../../assets/images/task_pr_7.png" /> -->
+</div>
+<div class="tasks-div">
+  <button (click)="getValues(0)" class="task-btn">Завдання 1</button>
+  <button (click)="getValues(1)" class="task-btn">Завдання 2</button>
+  <button (click)="getValues(2)" class="task-btn">Завдання 3</button>
+  <button (click)="getValues(3)" class="task-btn">Завдання 4</button>
+</div>
+
+<div class="flex div" *ngIf="visibleEnter[0] === true">
+  <h2 class="text">Веддіть параметри:</h2>
+  <input type="number" value="" placeholder="Крок" class="input-field" #step />
+  <button class="button" (click)="TabCalculate(step.value)">Розрахувати</button>
+</div>
+<div *ngIf="visible[0] === true" class="table-container">
+  <table border="1" class="table-bord">
+    <tr>
+      <th class="table-header">x</th>
+      <th class="table-header">y</th>
+    </tr>
+    <tr *ngFor="let item of tab | keyvalue">
+      <td class="table-cell">{{ item.key }}</td>
+      <td class="table-cell">{{ item.value }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="flex div" *ngIf="visibleEnter[1] === true">
+  <h2 class="text">Веддіть параметри:</h2>
+  <input
+    type="number"
+    value=""
+    placeholder="Значення X"
+    class="input-field"
+    #x
+  />
+  <input
+    type="number"
+    value=""
+    placeholder="Кількість ітерацій"
+    class="input-field"
+    #iteration
+  />
+  <button class="button" (click)="SeriesCalculate(x.value, iteration.value)">
+    Розрахувати
+  </button>
+</div>
+<div *ngIf="visible[1] === true" class="table-container">
+  <h2 class="text">Результат: {{ seriesResult }}</h2>
+</div>
+
+<div class="flex div" *ngIf="visibleEnter[2] === true">
+  <h2 class="text">Веддіть параметри:</h2>
+  <input
+    type="number"
+    value=""
+    placeholder="Значення X"
+    class="input-field"
+    #x
+  />
+  <input
+    type="number"
+    value=""
+    placeholder="Кількість ітерацій"
+    class="input-field"
+    #iteration
+  />
+  <button class="button" (click)="RecursiveCalculate(x.value, iteration.value)">
+    Розрахувати
+  </button>
+</div>
+<div *ngIf="visible[2] === true" class="table-container">
+  <h2 class="text">Результат: {{ recurciveResult }}</h2>
+</div>
+
+<div class="flex div" *ngIf="visibleEnter[3] === true">
+  <button (click)="AllCalculate()">Вивести таблицю</button>
+</div>
+<div *ngIf="visible[3] === true" class="table-container">
+  <table border="1" class="table-bord">
+    <thead>
+      <tr>
+        <th class="table-header">X</th>
+        <th class="table-header">Табулювання</th>
+        <th class="table-header">Ряд</th>
+        <th class="table-header">Рекурсивний ряд</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of tab | keyvalue">
+        <td class="table-cell">{{ x.key }}</td>
+        <td class="table-cell">{{ x.value }}</td>
+        <td class="table-cell">{{ series.get(x.key) }}</td>
+        <td class="table-cell">{{ seriesRec.get(x.key) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<canvas #LineCanvas></canvas>

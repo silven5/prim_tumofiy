@@ -1,0 +1,52 @@
+<div class="flex div">
+    <h1 class="text">Завдання</h1>
+    <h2 class="text-main">
+        Необхідно змінити проєкт розроблений
+        у третій практичній роботі додавши до нього новий компонент,
+        який призначений для роботи з абстрактними класами та файлом JSON,
+        що зберігається у хмарному сховищі.
+        Скрипт повинен виконувати перевірку даних отриманих з хмарного сховища.
+        Будь-які некоректні значення повинні блокуватися. <br><br>
+
+        Скласти програму з абстрактним батьківським класом
+        і двома об'єктами – нащадками.
+        Інформація про класи зберігається у JSON файлі.
+        Реалізувати циклічне виведення параметрів об'єктів,
+        використовуючи поліморфний контейнер - масив об'єктів базового класу.<br>
+        Виконати обрахунки відповідно до варіанту
+    </h2>
+</div>
+<div class="flex div">
+    <button (click)="load()">Зчитати</button>
+</div>
+<div class="products" *ngIf="visibility == true">
+    <div class="magList">
+        <h1 class="text">Журнали</h1>
+        <div *ngIf="magazineList" class="product-text">
+            <div *ngFor="let product of magazineList">
+                <p>Назва: {{ product.getTitle() }}</p>
+                <p>Ціна: {{ product.getValue() + "$"}}</p>
+                <p>Тираж: {{ product.getCirculation() }}</p>
+                <p>Вартість тиражу: {{ product.circulationValue() + "$" }}</p>
+                <p>
+                    -------------------------------------------------------------------------------
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="newsList">
+        <h1 class="text">Газети</h1>
+        <div *ngIf="newspaperList" class="product-text">
+            <div *ngFor="let product of newspaperList">
+                <p>Назва: {{ product.getTitle() }}</p>
+                <p>Кількість сторінок: {{ product.getAmountOfPages() }}</p>
+                <p>Ціна сторінки: {{ product.getValueOfPage() + "$"}}</p>
+                <p>Тираж: {{ product.getCirculation() }}</p>
+                <p>Вартість тиражу: {{ product.circulationValue() + "$" }}</p>
+                <p>
+                    -------------------------------------------------------------------------------------
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

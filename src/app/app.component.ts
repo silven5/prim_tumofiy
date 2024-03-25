@@ -1,14 +1,25 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { CloudComponent } from './cloud/cloud.component';
+import { ClassComponent } from './class/class.component';
+import { ServiceComponent } from './service/service.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports:  [
+    RouterOutlet,
+    HeaderComponent,
+    RouterLink,
+    RouterLinkActive,
+    CloudComponent,
+    ClassComponent,
+    ServiceComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'prim';
+  title = 'lab4-app';
 }

@@ -1,0 +1,23 @@
+<div class="flex div">
+  <h1 class="text">Завдання</h1>
+  <h2 class="text-main">
+    Перелік студентів: <br>
+    • ПІБ студента. <br>
+    • Дата народження. <br>
+    • Адреса. <br>
+    • Телефон <br>
+    Запит. Позначити кольором студентів, 
+    що мають однакову дату народження.    
+  </h2>
+</div>
+<div class="header">
+  <button (click)="load()">Зчитати</button>
+  <div *ngIf="dataStudents" class="students-list">
+      <div *ngFor="let student of dataStudents._Student" [ngStyle]="{'background-color': getColor(student.date_of_birth)}" class="student">
+          <p>Ім'я: {{ student.full_name }}</p>
+          <p>Дата народження: {{ student.date_of_birth }}</p>
+          <p>Адреса: {{ student.address }}</p>
+          <p>Номер телефону: {{ student.phone }}</p>
+      </div>
+  </div>
+</div>
